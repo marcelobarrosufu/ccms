@@ -21,52 +21,58 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="openssl\aes_cbc.c">
+    <ClInclude Include="..\..\src\openssl\aes.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\aes_core.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_ccmp.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\aes_ctr.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_defs.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\aes_ecb.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_locl.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\cbc128.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\crypto.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\ctr128.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\modes.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="aes_ccmp_main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="openssl\aes_misc.c">
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\modes_lcl.h">
       <Filter>Source Files\openssl</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\opensslv.h">
+      <Filter>Source Files\openssl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="openssl\aes.h">
+    <ClCompile Include="..\..\src\openssl\aes_cbc.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\aes_locl.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_ccmp.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\modes.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_core.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\crypto.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_ctr.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\modes_lcl.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_ecb.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\aes_defs.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_misc.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="openssl\opensslv.h">
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\cbc128.c">
       <Filter>Source Files\openssl</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\ctr128.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\aes_main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
