@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdint.h>
 #include "openssl\aes_defs.h"
-#include "openssl\aes_ccmp.h"
+#include "openssl\aes_ccms.h"
 
 int cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, AES_KEY *key_enc)
 {

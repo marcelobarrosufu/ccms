@@ -1,11 +1,11 @@
-#ifndef __AES_CCMP_H__
-#define __AES_CCMP_H__
+#ifndef __AES_CCMS_H__
+#define __AES_CCMS_H__
 
 #ifdef  __cplusplus
 extern "C" {
 #endif
 
-enum AES_CCMP_e {
+enum AES_CCMS_e {
     AES_CBC_MAC_HW,
     AES_CBC_MAC_FW,
 };
@@ -26,4 +26,4 @@ int cbc_mac_enc(uint8_t *a,
 }
 #endif
 
-#endif /* __AES_CCMP_H__ */
+#endif /* __AES_CCMS_H__ */

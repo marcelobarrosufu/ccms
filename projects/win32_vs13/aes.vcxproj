@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\openssl\aes.h" />
-    <ClInclude Include="..\..\src\openssl\aes_ccmp.h" />
+    <ClInclude Include="..\..\src\openssl\aes_ccms.h" />
     <ClInclude Include="..\..\src\openssl\aes_defs.h" />
     <ClInclude Include="..\..\src\openssl\aes_locl.h" />
     <ClInclude Include="..\..\src\openssl\crypto.h" />
@@ -93,7 +93,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\aes_main.c" />
     <ClCompile Include="..\..\src\openssl\aes_cbc.c" />
-    <ClCompile Include="..\..\src\openssl\aes_ccmp.c" />
+    <ClCompile Include="..\..\src\openssl\aes_ccms.c" />
     <ClCompile Include="..\..\src\openssl\aes_core.c" />
     <ClCompile Include="..\..\src\openssl\aes_ctr.c" />
     <ClCompile Include="..\..\src\openssl\aes_ecb.c" />
