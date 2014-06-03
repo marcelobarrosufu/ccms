@@ -11,6 +11,6 @@ AES-128 is implemented using openssl routines.
 | 1 | Security coprocessor is present but only AES-128 cipher is available (ECB) |
 | 2 | CBC is available, besides all modes in level 1 |
 | 3 | CTR is available, besides all modes in level 2 |
-| 4 | CCM-MAC is available, besides all modes in level 3 |
-| 5 | CCM* is available, besides all modes in level 4
+| 4 | CBC-MAC is available, besides all modes in level 3 |
+| 5 | CCM* is available (CBC-MAC plus CTR, in one single pass), besides all modes in level 4
 (*) Hardware Encryption Level
