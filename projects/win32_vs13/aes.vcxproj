@@ -85,6 +85,7 @@
     <ClInclude Include="..\..\src\openssl\aes_ccms.h" />
     <ClInclude Include="..\..\src\openssl\aes_ctr.h" />
     <ClInclude Include="..\..\src\openssl\aes_defs.h" />
+    <ClInclude Include="..\..\src\openssl\aes_ecb.h" />
     <ClInclude Include="..\..\src\openssl\aes_locl.h" />
     <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h" />
     <ClInclude Include="..\..\src\openssl\crypto.h" />

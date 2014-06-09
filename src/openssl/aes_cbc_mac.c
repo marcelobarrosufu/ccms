@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdint.h>
 #include "openssl\aes_defs.h"
+#include "openssl\aes_ecb.h"
 #include "openssl\aes_cbc_mac.h"
 
 int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16])
@@ -9,9 +10,7 @@ int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16])
     uint8_t iv[16];
 
     memset(iv, 0, 16);
-    
     AES_set_encrypt_key(key, 128, &key_enc);
-
     AES_cbc_encrypt(buffer, buffer, len, &key_enc, iv, AES_ENCRYPT);
 
     return 0;
@@ -20,14 +19,11 @@ int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16])
 int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, uint8_t key[16])
 {
     uint8_t n, k, nb, *pbuf;
-    AES_KEY key_enc;
-
-    AES_set_encrypt_key(key, 128, &key_enc);
 
     nb = len >> 4;
     for (n = 0; n < nb; n++) {
         pbuf = &buffer[16 * n];
-        AES_ecb_encrypt(pbuf, pbuf, &key_enc, AES_ENCRYPT);
+        aes_ecb_enc(pbuf,key);
         if (n < (nb - 1)) {
             // may be faster if vector are aligned to 4 bytes (use long instead char in xor)
             for (k = 0; k < 16; k++){

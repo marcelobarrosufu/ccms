@@ -4,6 +4,7 @@
 #include <openssl\aes.h>
 #include <openssl\modes.h>
 #include "openssl\aes_defs.h"
+#include "openssl\aes_ecb.h"
 #include "openssl\aes_ctr.h"
 
 // openssl
@@ -37,7 +38,6 @@ int aes_ctr_enc_hw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16])
 
     num = 0;
     memset(ebuf, 0, 16);
-
     AES_set_encrypt_key(key, 128, &key_enc);
     AES_ctr128_encrypt(buffer, buffer, len, &key_enc, iv, ebuf, &num);
 
@@ -48,14 +48,12 @@ int aes_ctr_enc_fw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16])
 {
     uint8_t n, k, nb, *pbuf;
     uint8_t eiv[16];
-    AES_KEY key_enc;
-
-    AES_set_encrypt_key(key, 128, &key_enc);
 
     nb = len >> 4;
     for (n = 0; n < nb; n++) {
         pbuf = &buffer[16 * n];
-        AES_ecb_encrypt(iv, eiv, &key_enc, AES_ENCRYPT);
+        memcpy(eiv, iv, 16);
+        aes_ecb_enc(eiv, key); 
         // may be faster if vector are aligned to 4 bytes (use long instead char in xor)
         for (k = 0; k < 16; k++){
            pbuf[k] ^= eiv[k];
