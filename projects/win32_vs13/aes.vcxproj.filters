@@ -45,6 +45,12 @@
     <ClInclude Include="..\..\src\openssl\aes_ccms.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_ctr.h">
+      <Filter>Source Files\openssl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h">
+      <Filter>Source Files\openssl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\openssl\aes_cbc.c">
@@ -72,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\openssl\aes_ccms.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_cbc_mac.c">
       <Filter>Source Files\openssl</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <assert.h>
 #include "openssl\aes_defs.h"
-#include "openssl\aes_ccms.h"
+#include "openssl\aes_cbc_mac.h"
+#include "openssl\aes_ctr.h"
 
 static const uint8_t key[] = { 0x06, 0x17, 0x3B, 0xB8, 0xDE, 0x44, 0xB5, 0xEA, 0xF8, 0x48, 0xF6, 0xAF, 0x6F, 0xD1, 0x0A, 0xA4 };
 static AES_KEY priv_key_enc, priv_key_dec;
@@ -35,12 +36,12 @@ int main(int argc, char* argv[])
     uint8_t mac[4];
     uint8_t mac2[4];
 
-    cbc_mac_enc(a, la, m, lm, saddr, asn, key, mac, 4, AES_CBC_MAC_HW);
+    aes_cbc_mac_enc(a, la, m, lm, saddr, asn, key, mac, 4, AES_CBC_MAC_HW);
     printf("\nMAC HW:");
     dump_frame(mac, 5);
 
     mac[0] = mac[1] = mac[2] = mac[3] = 0;
-    cbc_mac_enc(a, la, m, lm, saddr, asn, key, mac, 4, AES_CBC_MAC_FW);
+    aes_cbc_mac_enc(a, la, m, lm, saddr, asn, key, mac, 4, AES_CBC_MAC_FW);
     printf("\nMAC FW:");
     dump_frame(mac, 5);
     memcpy(mac2, mac, 4);

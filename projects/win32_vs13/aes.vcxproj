@@ -83,8 +83,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\openssl\aes.h" />
     <ClInclude Include="..\..\src\openssl\aes_ccms.h" />
+    <ClInclude Include="..\..\src\openssl\aes_ctr.h" />
     <ClInclude Include="..\..\src\openssl\aes_defs.h" />
     <ClInclude Include="..\..\src\openssl\aes_locl.h" />
+    <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h" />
     <ClInclude Include="..\..\src\openssl\crypto.h" />
     <ClInclude Include="..\..\src\openssl\modes.h" />
     <ClInclude Include="..\..\src\openssl\modes_lcl.h" />
@@ -99,6 +101,7 @@
     <ClCompile Include="..\..\src\openssl\aes_ecb.c" />
     <ClCompile Include="..\..\src\openssl\aes_misc.c" />
     <ClCompile Include="..\..\src\openssl\cbc128.c" />
+    <ClCompile Include="..\..\src\openssl\aes_cbc_mac.c" />
     <ClCompile Include="..\..\src\openssl\ctr128.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
