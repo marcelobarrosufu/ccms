@@ -3,14 +3,31 @@
 #include "openssl\aes_defs.h"
 #include "openssl\aes_cbc_mac.h"
 
-int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, AES_KEY *key_enc)
+int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16])
+{
+    AES_KEY key_enc;
+    uint8_t iv[16];
+
+    memset(iv, 0, 16);
+    
+    AES_set_encrypt_key(key, 128, &key_enc);
+
+    AES_cbc_encrypt(buffer, buffer, len, &key_enc, iv, AES_ENCRYPT);
+
+    return 0;
+}
+
+int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, uint8_t key[16])
 {
     uint8_t n, k, nb, *pbuf;
+    AES_KEY key_enc;
+
+    AES_set_encrypt_key(key, 128, &key_enc);
 
     nb = len >> 4;
     for (n = 0; n < nb; n++) {
         pbuf = &buffer[16 * n];
-        AES_ecb_encrypt(pbuf, pbuf, key_enc, AES_ENCRYPT);
+        AES_ecb_encrypt(pbuf, pbuf, &key_enc, AES_ENCRYPT);
         if (n < (nb - 1)) {
             // may be faster if vector are aligned to 4 bytes (use long instead char in xor)
             for (k = 0; k < 16; k++){
@@ -30,14 +47,11 @@ int aes_cbc_mac_enc(uint8_t *a,
                 uint8_t asn[5],
                 uint8_t *key,
                 uint8_t *mac,
-                uint8_t len_mac,
-                uint8_t cbc_mac_support)
+                uint8_t len_mac)
 {
     uint8_t pad_len;
     uint8_t len;
-    uint8_t iv[16];
     uint8_t buffer[128+16]; // max buffer plus IV
-    AES_KEY key_enc;
 
     // asserts here
     if (!((len_mac == 4) || (len_mac == 8) || (len_mac == 16)))
@@ -49,13 +63,8 @@ int aes_cbc_mac_enc(uint8_t *a,
     if (mac == 0)
         return -3;
 
-    if (!((cbc_mac_support == AES_CBC_MAC_HW) || (cbc_mac_support == AES_CBC_MAC_FW)))
-        return -4;
-
     // IV: flags (1B) | SADDR (8B) | ASN (5B) | len(m) (2B)
-    // X0 xor IV in first 16 bytes of buffer
-    // (openssl will start with buffer[:16]^IV so use IV as zero and set buffer[:16] as IV)
-    memset(iv, 0, 16); 
+    // X0 xor IV in first 16 bytes of buffer: set buffer[:16] as IV)
     buffer[0] = 0;
     buffer[1] = len_m;
     memcpy(&buffer[2], asn, 5); // assign byte by byte or copy ?
@@ -85,12 +94,11 @@ int aes_cbc_mac_enc(uint8_t *a,
     memset(&buffer[len], 0, pad_len);
     len += pad_len;
 
-    AES_set_encrypt_key(key, 128, &key_enc);
 
-    if (cbc_mac_support == AES_CBC_MAC_HW)
-        AES_cbc_encrypt(buffer, buffer, len, &key_enc, iv, AES_ENCRYPT);
+    if (AES_CBC_MAC_SUPPORT == AES_CBC_MAC_HW)
+        aes_cbc_mac_enc_hw(buffer, len, key);
     else
-        aes_cbc_mac_enc_fw(buffer, len, &key_enc);
+        aes_cbc_mac_enc_fw(buffer, len, key);
 
     memcpy(mac, &buffer[len - 16], len_mac);
 

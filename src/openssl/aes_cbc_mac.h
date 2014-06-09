@@ -5,12 +5,8 @@
 extern "C" {
 #endif
 
-enum AES_CNC_MAC_E {
-    AES_CBC_MAC_HW,
-    AES_CBC_MAC_FW
-};
-
-int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, AES_KEY *key_enc);
+int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16]);
+int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, uint8_t key[16]);
 int aes_cbc_mac_enc(uint8_t *a, 
                 uint8_t len_a,
                 uint8_t *m,
@@ -19,8 +15,7 @@ int aes_cbc_mac_enc(uint8_t *a,
                 uint8_t asn[5],
                 uint8_t *key,
                 uint8_t *mac,
-                uint8_t len_mac,
-                uint8_t cbc_mac_support);
+                uint8_t len_mac);
 
 #ifdef  __cplusplus
 }

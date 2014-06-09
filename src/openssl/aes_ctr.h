@@ -5,10 +5,8 @@
 extern "C" {
 #endif
 
-enum AES_CTR_E {
-    AES_CTR_HW,
-    AES_CTR_FW
-};
+int aes_ctr_enc_hw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16]);
+int aes_ctr_enc_fw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16]);
 
 int aes_ctr_enc(uint8_t *m,
     uint8_t len_m,
@@ -16,8 +14,7 @@ int aes_ctr_enc(uint8_t *m,
     uint8_t asn[5],
     uint8_t *key,
     uint8_t *mac,
-    uint8_t len_mac,
-    uint8_t aes_ctr_support);
+    uint8_t len_mac);
 
 #ifdef  __cplusplus
 }

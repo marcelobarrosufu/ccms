@@ -21,9 +21,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\openssl\aes.h">
-      <Filter>Source Files\openssl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\openssl\aes_defs.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
@@ -42,23 +39,20 @@
     <ClInclude Include="..\..\src\openssl\opensslv.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_ccms.h">
+    <ClInclude Include="..\..\src\openssl\aes_ctr.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_ctr.h">
+    <ClInclude Include="..\..\src\openssl\aes.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes_ccms.h">
+      <Filter>Source Files\openssl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\openssl\aes_cbc.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_core.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\openssl\aes_ctr.c">
       <Filter>Source Files\openssl</Filter>
     </ClCompile>
@@ -77,10 +71,16 @@
     <ClCompile Include="..\..\src\aes_main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_ccms.c">
+    <ClCompile Include="..\..\src\openssl\aes_cbc.c">
       <Filter>Source Files\openssl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\openssl\aes_cbc_mac.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_ccms.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_core.c">
       <Filter>Source Files\openssl</Filter>
     </ClCompile>
   </ItemGroup>
