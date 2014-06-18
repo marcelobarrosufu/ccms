@@ -8,24 +8,6 @@ extern "C" {
 #include <stddef.h>
 #include <stdint.h>
 
-#ifdef _MSC_VER
-    #define port_INLINE   __inline
-    #define BEGIN_PACK    __pragma(pack(1))
-    #define END_PACK      __pragma(pack())
-#else /* GCC compiler */
-    #define port_INLINE   inline
-    #define BEGIN_PACK    _Pragma("pack(1)")
-    #define END_PACK      _Pragma("pack()")
-#endif
-
-#ifndef TRUE
-#define TRUE 1
-#endif
-
-#ifndef FALSE
-#define FALSE 0
-#endif
-
 // Use assembly
 #undef AES_ASM
 // #define AES_ASM 1
@@ -52,57 +34,11 @@ extern "C" {
 
 #define AES_MAXNR 14
 #define AES_BLOCK_SIZE 16
-#define CBC_MAC_SIZE  4
-
 #define AES_ENCRYPT	1
 #define AES_DECRYPT	0
 
 #define GETU32(p)	((u32)(p)[0]<<24|(u32)(p)[1]<<16|(u32)(p)[2]<<8|(u32)(p)[3])
 #define PUTU32(p,v)	((p)[0]=(u8)((v)>>24),(p)[1]=(u8)((v)>>16),(p)[2]=(u8)((v)>>8),(p)[3]=(u8)(v))
-
-// types of addresses
-enum {
-    ADDR_NONE = 0,
-    ADDR_16B = 1,
-    ADDR_64B = 2,
-    ADDR_128B = 3,
-    ADDR_PANID = 4,
-    ADDR_PREFIX = 5,
-    ADDR_ANYCAST = 6,
-};
-
-enum {
-    OW_LITTLE_ENDIAN = TRUE,
-    OW_BIG_ENDIAN = FALSE,
-};
-
-
-enum CCMS_CRYPTO_SUPPORT_E {
-    CCMS_CRYPTO_SUPPORT_ECB     = 0x01,
-    CCMS_CRYPTO_SUPPORT_CBC_MAC = 0x02,
-    CCMS_CRYPTO_SUPPORT_CTR     = 0x04,
-    CCMS_CRYPTO_SUPPORT_CCMS    = 0x08,
-};
-
-enum AES_ECB_E {
-    AES_ECB_HW,
-    AES_ECB_FW
-};
-
-enum AES_CBC_MAC_E {
-    AES_CBC_MAC_HW,
-    AES_CBC_MAC_FW
-};
-
-enum AES_CTR_E {
-    AES_CTR_HW,
-    AES_CTR_FW
-};
-
-
-#define AES_ECB_SUPPORT     AES_ECB_FW
-#define AES_CBC_MAC_SUPPORT AES_CBC_MAC_FW
-#define AES_CTR_SUPPORT     AES_CTR_FW
 
 typedef uint32_t u32;
 typedef uint16_t u16;
@@ -112,27 +48,6 @@ struct aes_key_st {
 	unsigned long rd_key[4 * (AES_MAXNR + 1)];
 	int rounds;
 };
-
-BEGIN_PACK;
-typedef struct {                                 // always written big endian, i.e. MSB in addr[0]
-    uint8_t type;
-    union {
-        uint8_t addr_16b[2];
-        uint8_t addr_64b[8];
-        uint8_t addr_128b[16];
-        uint8_t panid[2];
-        uint8_t prefix[8];
-    };
-} open_addr_t;
-END_PACK;
-
-BEGIN_PACK;
-typedef struct {
-    uint8_t  byte4;
-    uint16_t bytes2and3;
-    uint16_t bytes0and1;
-} asn_t;
-END_PACK;
 
 typedef struct aes_key_st AES_KEY;
 

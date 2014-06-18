@@ -41,7 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)\..\..\src\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\..\src\owsn;$(ProjectDir)\..\..\src\board;$(ProjectDir)\..\..\src\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -78,32 +78,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <ClCompile Include="..\..\src\crypto_main.c" />
+    <ClCompile Include="..\..\src\board\crypto_driver_board.c" />
+    <ClCompile Include="..\..\src\board\aes_cbc_mac_board.c" />
+    <ClCompile Include="..\..\src\board\aes_ccms_board.c" />
+    <ClCompile Include="..\..\src\board\aes_ctr_board.c" />
+    <ClCompile Include="..\..\src\board\aes_ecb_board.c" />
+    <ClCompile Include="..\..\src\openssl\aes_cbc.c" />
+    <ClCompile Include="..\..\src\openssl\aes_core.c" />
+    <ClCompile Include="..\..\src\openssl\aes_misc.c" />
+    <ClCompile Include="..\..\src\openssl\cbc128.c" />
+    <ClCompile Include="..\..\src\openssl\ctr128.c" />
+    <ClCompile Include="..\..\src\owsn\aes_cbc_mac.c" />
+    <ClCompile Include="..\..\src\owsn\aes_ccms.c" />
+    <ClCompile Include="..\..\src\owsn\aes_ctr.c" />
+    <ClCompile Include="..\..\src\owsn\aes_ecb.c" />
+    <ClCompile Include="..\..\src\owsn\crypto_driver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\board\crypto_driver_board.h" />
+    <ClInclude Include="..\..\src\board\aes_cbc_mac_board.h" />
+    <ClInclude Include="..\..\src\board\aes_ccms_board.h" />
+    <ClInclude Include="..\..\src\board\aes_ctr_board.h" />
+    <ClInclude Include="..\..\src\board\aes_ecb_board.h" />
     <ClInclude Include="..\..\src\openssl\aes.h" />
-    <ClInclude Include="..\..\src\openssl\aes_ccms.h" />
-    <ClInclude Include="..\..\src\openssl\aes_ctr.h" />
     <ClInclude Include="..\..\src\openssl\aes_defs.h" />
-    <ClInclude Include="..\..\src\openssl\aes_ecb.h" />
     <ClInclude Include="..\..\src\openssl\aes_locl.h" />
-    <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h" />
     <ClInclude Include="..\..\src\openssl\crypto.h" />
     <ClInclude Include="..\..\src\openssl\modes.h" />
     <ClInclude Include="..\..\src\openssl\modes_lcl.h" />
     <ClInclude Include="..\..\src\openssl\opensslv.h" />
+    <ClInclude Include="..\..\src\owsn\aes_cbc_mac.h" />
+    <ClInclude Include="..\..\src\owsn\aes_ccms.h" />
+    <ClInclude Include="..\..\src\owsn\aes_ctr.h" />
+    <ClInclude Include="..\..\src\owsn\aes_ecb.h" />
+    <ClInclude Include="..\..\src\owsn\crypto_driver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\aes_main.c" />
-    <ClCompile Include="..\..\src\openssl\aes_cbc.c" />
-    <ClCompile Include="..\..\src\openssl\aes_ccms.c" />
-    <ClCompile Include="..\..\src\openssl\aes_core.c" />
-    <ClCompile Include="..\..\src\openssl\aes_ctr.c" />
-    <ClCompile Include="..\..\src\openssl\aes_ecb.c" />
-    <ClCompile Include="..\..\src\openssl\aes_misc.c" />
-    <ClCompile Include="..\..\src\openssl\cbc128.c" />
-    <ClCompile Include="..\..\src\openssl\aes_cbc_mac.c" />
-    <ClCompile Include="..\..\src\openssl\ctr128.c" />
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,15 +13,92 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\owsn">
+      <UniqueIdentifier>{1e2799b5-7b10-4ede-a37d-7eb5382d4f9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\board">
+      <UniqueIdentifier>{f70c3602-b0c6-4f39-909a-92974f9ed6e4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\openssl">
-      <UniqueIdentifier>{a23156e6-ff6e-45e3-baca-ea5f91432a70}</UniqueIdentifier>
+      <UniqueIdentifier>{cd457a65-9e3a-4bdf-b6ec-c11d654572ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <ClCompile Include="..\..\src\board\aes_cbc_mac_board.c">
+      <Filter>Source Files\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\board\aes_ccms_board.c">
+      <Filter>Source Files\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\board\aes_ctr_board.c">
+      <Filter>Source Files\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\board\aes_ecb_board.c">
+      <Filter>Source Files\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\owsn\aes_cbc_mac.c">
+      <Filter>Source Files\owsn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\owsn\aes_ccms.c">
+      <Filter>Source Files\owsn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\owsn\aes_ctr.c">
+      <Filter>Source Files\owsn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\owsn\aes_ecb.c">
+      <Filter>Source Files\owsn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_misc.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\cbc128.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\ctr128.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\owsn\crypto_driver.c">
+      <Filter>Source Files\owsn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_cbc.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\openssl\aes_core.c">
+      <Filter>Source Files\openssl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\board\crypto_driver_board.c">
+      <Filter>Source Files\board</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\crypto_main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\openssl\aes_defs.h">
+    <ClInclude Include="..\..\src\board\aes_cbc_mac_board.h">
+      <Filter>Source Files\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\board\aes_ccms_board.h">
+      <Filter>Source Files\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\board\aes_ctr_board.h">
+      <Filter>Source Files\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\board\aes_ecb_board.h">
+      <Filter>Source Files\board</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\owsn\aes_cbc_mac.h">
+      <Filter>Source Files\owsn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\owsn\aes_ccms.h">
+      <Filter>Source Files\owsn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\owsn\aes_ctr.h">
+      <Filter>Source Files\owsn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\owsn\aes_ecb.h">
+      <Filter>Source Files\owsn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\openssl\aes.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\openssl\aes_locl.h">
@@ -39,52 +116,17 @@
     <ClInclude Include="..\..\src\openssl\opensslv.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_ctr.h">
+    <ClInclude Include="..\..\src\openssl\aes_defs.h">
       <Filter>Source Files\openssl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes.h">
-      <Filter>Source Files\openssl</Filter>
+    <ClInclude Include="..\..\src\board\crypto_driver_board.h">
+      <Filter>Source Files\board</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_cbc_mac.h">
-      <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_ccms.h">
-      <Filter>Source Files\openssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\openssl\aes_ecb.h">
-      <Filter>Source Files\openssl</Filter>
+    <ClInclude Include="..\..\src\owsn\crypto_driver.h">
+      <Filter>Source Files\owsn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\openssl\aes_ctr.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_ecb.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_misc.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\cbc128.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\ctr128.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\aes_main.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_cbc.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_cbc_mac.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_ccms.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\openssl\aes_core.c">
-      <Filter>Source Files\openssl</Filter>
-    </ClCompile>
+    <None Include="..\..\README.md" />
   </ItemGroup>
 </Project>
