@@ -21,6 +21,7 @@ There are seven function to be created:
 
 All later usage is simple and based on driver calls. For instance:
 
+```c
  uint8_t key[] = { 0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF };
  uint8_t buffer[] = { 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F };
 
@@ -29,6 +30,7 @@ All later usage is simple and based on driver calls. For instance:
  crypto_driver_init(); // platform dependent call
  
  drv->aes_ecb_enc(buffer, key); // buffer is encrypted using key
+```
 
 Software implementations were provided for all functions except for aes_ecb_enc where a 
 TI code was used (it should work on 8/16 bits processors, see aes_ecb.c). 
