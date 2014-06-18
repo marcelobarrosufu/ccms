@@ -1,29 +1,18 @@
 #include <string.h>
 #include <stdint.h>
-#include "openssl\aes_defs.h"
-#include "openssl\aes_ecb.h"
-#include "openssl\aes_cbc_mac.h"
+#include "crypto_driver.h"
 
-int aes_cbc_mac_enc_hw(uint8_t *buffer, uint8_t len, uint8_t key[16])
-{
-    AES_KEY key_enc;
-    uint8_t iv[16];
 
-    memset(iv, 0, 16);
-    AES_set_encrypt_key(key, 128, &key_enc);
-    AES_cbc_encrypt(buffer, buffer, len, &key_enc, iv, AES_ENCRYPT);
-
-    return 0;
-}
-
-int aes_cbc_mac_enc_fw(uint8_t *buffer, uint8_t len, uint8_t key[16])
+int aes_cbc_mac_enc_raw(uint8_t *buffer, uint8_t len, uint8_t key[16])
 {
     uint8_t n, k, nb, *pbuf;
+
+    const crypto_driver_t* drv = crypto_driver_get();
 
     nb = len >> 4;
     for (n = 0; n < nb; n++) {
         pbuf = &buffer[16 * n];
-        aes_ecb_enc(pbuf,key);
+        drv->aes_ecb_enc(pbuf,key);
         if (n < (nb - 1)) {
             // may be faster if vector are aligned to 4 bytes (use long instead char in xor)
             for (k = 0; k < 16; k++){
@@ -48,6 +37,8 @@ int aes_cbc_mac_enc(uint8_t *a,
     uint8_t pad_len;
     uint8_t len;
     uint8_t buffer[128+16]; // max buffer plus IV
+
+    const crypto_driver_t* drv = crypto_driver_get();
 
     // asserts here
     if (!((len_mac == 4) || (len_mac == 8) || (len_mac == 16)))
@@ -91,12 +82,7 @@ int aes_cbc_mac_enc(uint8_t *a,
     len += pad_len;
 
 
-    if (AES_CBC_MAC_SUPPORT == AES_CBC_MAC_HW)
-        aes_cbc_mac_enc_hw(buffer, len, key);
-    else
-        aes_cbc_mac_enc_fw(buffer, len, key);
-
-    memcpy(mac, &buffer[len - 16], len_mac);
+    drv->aes_cbc_mac_enc_raw(buffer, len, key);
 
     return 0;
 }

@@ -1,26 +1,12 @@
 #include <string.h>
 #include <stdint.h>
-// openssl
-#include <openssl\aes.h>
-#include <openssl\modes.h>
-#include "openssl\aes_defs.h"
-#include "openssl\aes_ecb.h"
-#include "openssl\aes_ctr.h"
+#include "crypto_driver.h"
 
-// openssl
-static void AES_ctr128_encrypt(const unsigned char *in, unsigned char *out,
-    size_t length, const AES_KEY *key,
-    unsigned char ivec[AES_BLOCK_SIZE],
-    unsigned char ecount_buf[AES_BLOCK_SIZE],
-    unsigned int *num) {
-    CRYPTO_ctr128_encrypt(in, out, length, key, ivec, ecount_buf, num, (block128_f) AES_encrypt);
-}
-
-// openssl
-static void inc_counter(unsigned char *counter) 
+static void inc_counter(uint8_t *counter) 
 {
-    u32 n = 16;
-    u8  c;
+    // from openssl
+    uint32_t n = 16;
+    uint8_t  c;
     do {
         --n;
         c = counter[n];
@@ -30,30 +16,18 @@ static void inc_counter(unsigned char *counter)
     } while (n);
 }
 
-int aes_ctr_enc_hw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16])
-{
-    uint8_t ebuf[16];
-    uint32_t num;
-    AES_KEY key_enc;
-
-    num = 0;
-    memset(ebuf, 0, 16);
-    AES_set_encrypt_key(key, 128, &key_enc);
-    AES_ctr128_encrypt(buffer, buffer, len, &key_enc, iv, ebuf, &num);
-
-    return 0;
-}
-
-int aes_ctr_enc_fw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16])
+int aes_ctr_enc_raw(uint8_t *buffer, uint8_t len, uint8_t *key, uint8_t iv[16])
 {
     uint8_t n, k, nb, *pbuf;
     uint8_t eiv[16];
+
+    const crypto_driver_t* drv = crypto_driver_get();
 
     nb = len >> 4;
     for (n = 0; n < nb; n++) {
         pbuf = &buffer[16 * n];
         memcpy(eiv, iv, 16);
-        aes_ecb_enc(eiv, key); 
+        drv->aes_ecb_enc(eiv, key); 
         // may be faster if vector are aligned to 4 bytes (use long instead char in xor)
         for (k = 0; k < 16; k++){
            pbuf[k] ^= eiv[k];
@@ -77,6 +51,8 @@ int aes_ctr_enc(uint8_t *m,
     uint8_t len;
     uint8_t iv[16];
     uint8_t buffer[128 + 16]; // max buffer plus mac
+
+    const crypto_driver_t* drv = crypto_driver_get();
 
     // asserts here
     if (!((len_mac == 4) || (len_mac == 8) || (len_mac == 16)))
@@ -106,10 +82,7 @@ int aes_ctr_enc(uint8_t *m,
     memset(&buffer[len], 0, pad_len);
     len += pad_len;
 
-    if (AES_CTR_SUPPORT == AES_CTR_HW)
-        aes_ctr_enc_fw(buffer, len, key, iv);
-    else
-        aes_ctr_enc_fw(buffer, len, key, iv);
+    drv->aes_ctr_enc_raw(buffer, len, key, iv);
 
     memcpy(m, &buffer[16], len_m);
     memcpy(mac, buffer, len_mac);
