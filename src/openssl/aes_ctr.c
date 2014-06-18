@@ -85,9 +85,6 @@ int aes_ctr_enc(uint8_t *m,
     if (len_m > 127)
         return -2;
 
-    if (mac == 0)
-        return -3;
-
     // iv (flag (1B) | source addr (8B) | ASN (5B) | cnt (2B)
     iv[0] = 0x01;
     memcpy(&iv[1], saddr, 8);

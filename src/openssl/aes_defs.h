@@ -52,6 +52,7 @@ extern "C" {
 
 #define AES_MAXNR 14
 #define AES_BLOCK_SIZE 16
+#define CBC_MAC_SIZE  4
 
 #define AES_ENCRYPT	1
 #define AES_DECRYPT	0
@@ -73,6 +74,14 @@ enum {
 enum {
     OW_LITTLE_ENDIAN = TRUE,
     OW_BIG_ENDIAN = FALSE,
+};
+
+
+enum CCMS_CRYPTO_SUPPORT_E {
+    CCMS_CRYPTO_SUPPORT_ECB     = 0x01,
+    CCMS_CRYPTO_SUPPORT_CBC_MAC = 0x02,
+    CCMS_CRYPTO_SUPPORT_CTR     = 0x04,
+    CCMS_CRYPTO_SUPPORT_CCMS    = 0x08,
 };
 
 enum AES_ECB_E {
