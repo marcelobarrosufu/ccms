@@ -47,7 +47,7 @@ int crypto_driver_board_init(crypto_driver_t *crypto_driver)
     crypto_driver->aes_ecb_enc = aes_ecb_board_enc;
 
     return 0;
-
+}
 ```
 
 Software implementations were provided for all functions except for aes_ecb_enc where a 
