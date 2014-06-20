@@ -31,6 +31,25 @@ All later usage is simple and based on driver calls. For instance:
  drv->aes_ecb_enc(buffer, key); // buffer is encrypted using key
 ```
 
+When initializing the driver, the developer needs to decide which set of functions to use (see the file crypto_driver_board.c). The proposed functions can be used or some specific functions, crafted for its crypto engine. In this case, it is necessary to create them (*_board.c|h files) and initialize the driver properly.
+
+```c
+int crypto_driver_board_init(crypto_driver_t *crypto_driver)
+{
+    /* CCM*. CBC-MAC provided by firmware */
+    crypto_driver->aes_ccms_dec = aes_ccms_dec;
+    crypto_driver->aes_ccms_enc = aes_ccms_enc;
+    crypto_driver->aes_cbc_mac_enc = aes_cbc_mac_enc;
+    /* CBC, CTR and ECB are provided by crypto engine */
+    crypto_driver->aes_cbc_mac_enc_raw = aes_cbc_mac_board_enc_raw; 
+    crypto_driver->aes_ctr_enc = aes_ctr_board_enc;
+    crypto_driver->aes_ctr_enc_raw = aes_ctr_board_enc_raw;
+    crypto_driver->aes_ecb_enc = aes_ecb_board_enc;
+
+    return 0;
+
+```
+
 Software implementations were provided for all functions except for aes_ecb_enc where a 
 TI code was used (it should work on 8/16 bits processors, see aes_ecb.c). 
 It is possible to use openssl implementation for aes_ecb_enc if you are using a 32 bits processor (see aes_core.c). 
