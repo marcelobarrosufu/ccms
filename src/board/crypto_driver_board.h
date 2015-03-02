@@ -1,3 +1,8 @@
+/**
+\brief Definitions for crypto driver initialization for custom board
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __CRYPTO_DRIVER_BOARD_H__
 #define __CRYPTO_DRIVER_BOARD_H__
 

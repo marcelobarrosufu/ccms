@@ -1,3 +1,8 @@
+/**
+\brief CCMS entry points
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <string.h>
 #include <stdint.h>
 #include "crypto_driver.h"

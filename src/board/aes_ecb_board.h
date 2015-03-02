@@ -1,3 +1,8 @@
+/**
+\brief Definitions for AES ECB entry point
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __AES_ECB_BOARD_H__
 #define __AES_ECB_BOARD_H__
 

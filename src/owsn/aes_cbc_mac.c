@@ -1,7 +1,11 @@
+/**
+\brief AES CBC MAC implementation
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <string.h>
 #include <stdint.h>
 #include "crypto_driver.h"
-
 
 int aes_cbc_mac_enc_raw(uint8_t *buffer, uint8_t len, uint8_t key[16])
 {
@@ -81,8 +85,10 @@ int aes_cbc_mac_enc(uint8_t *a,
     memset(&buffer[len], 0, pad_len);
     len += pad_len;
 
-
     drv->aes_cbc_mac_enc_raw(buffer, len, key);
+
+    // copy MAC
+    memcpy(mac, &buffer[len - 16], len_mac);
 
     return 0;
 }

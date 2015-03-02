@@ -1,3 +1,8 @@
+/**
+\brief Definitions for CCMS entry points
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __AES_CCMS_BOARD_H__
 #define __AES_CCMS_BOARD_H__
 

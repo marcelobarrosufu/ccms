@@ -1,3 +1,8 @@
+/**
+\brief AES CTR implementation
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <string.h>
 #include <stdint.h>
 #include "crypto_driver.h"

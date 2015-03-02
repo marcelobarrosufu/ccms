@@ -1,3 +1,8 @@
+/**
+\brief Definitions for AES CBC MAC implementation
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __CBC_MAC_H__
 #define __CBC_MAC_H__
 

@@ -1,3 +1,8 @@
+/**
+\brief AES CTR entry points
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <stdint.h>
 #include <string.h>
 #include "openssl\aes_defs.h"

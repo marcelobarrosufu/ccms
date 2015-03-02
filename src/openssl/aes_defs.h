@@ -1,3 +1,8 @@
+/**
+\brief Modified version of aes_defs.h (from OpenSSL) where unused definitions were suppressed.
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __AES_CONFIG_H__
 #define __AES_CONFIG_H__
 

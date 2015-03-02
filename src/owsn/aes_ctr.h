@@ -1,3 +1,8 @@
+/**
+\brief Definitions for AES CTR implementation
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __AES_CTR_H__
 #define __AES_CTR_H__
 

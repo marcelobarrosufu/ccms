@@ -1,3 +1,8 @@
+/**
+\brief Declarations for CBC MAC entry points
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __CBC_MAC_BOARD_H__
 #define __CBC_MAC_BOARD_H__
 

@@ -1,4 +1,8 @@
+/**
+\brief Crypto driver initialization for custom board
 
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <stdint.h>
 #include "crypto_driver.h"
 #include "aes_ccms.h"

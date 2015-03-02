@@ -1,3 +1,8 @@
+/**
+\brief Defitions for crypto driver initialization
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __CRYPTO_DRIVER_H__
 #define __CRYPTO_DRIVER_H__
 

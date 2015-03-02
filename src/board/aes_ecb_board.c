@@ -1,3 +1,8 @@
+/**
+\brief AES ECB entry point
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <stdint.h>
 #include <openssl/aes.h>
 #include <openssl/modes.h>

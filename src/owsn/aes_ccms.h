@@ -1,3 +1,8 @@
+/**
+\brief Definitions for AES CCMS implementation
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #ifndef __AES_CCMS_H__
 #define __AES_CCMS_H__
 

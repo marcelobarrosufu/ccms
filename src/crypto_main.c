@@ -1,3 +1,8 @@
+/**
+\brief Crypto driver example
+
+\author Marcelo Barros de Almeida <marcelobarrosalmeida@gmail.com>
+*/
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
